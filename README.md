@@ -542,7 +542,7 @@ function Item({ item, onUpdateItem }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        isInCart: !item.isInCart,
+        isInCart:!item.isInCart,
       }),
     })
       .then((r) => r.json())

@@ -14,7 +14,20 @@ function ShoppingList() {
   },[]);
   // add this callback function
   function handleUpdateItem(updatedItem){
+    const updatedItems = items.map((item)=>{
+      if (item.id === updatedItem.id){
+      return updatedItem;
+    } else {
+        return item;
+      }
+    });
+    setItems(updatedItems);
     console.log("In shoppingCart:", updatedItem)
+  }
+  function handleDeletedItem(deletedItem){
+    const updatedItems = items.filter((item)=> item.id !== deletedItem.id);
+    setItems(updatedItems);
+    console.log("In ShoppingCart:", deletedItem)
   }
 function handleAddItem(newItem) {
   setItems([...items,newItem])
@@ -40,7 +53,9 @@ function handleAddItem(newItem) {
       <ul className="Items">
         {itemsToDisplay.map((item) => (
           <Item key={item.id} item={item}
-          onUpdateItem={handleUpdateItem} />
+          onUpdateItem={handleUpdateItem} 
+          onDeleteItem= {handleDeletedItem}
+          />
         ))}
       </ul>
     </div>
